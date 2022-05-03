@@ -1,0 +1,12 @@
+| benchmark                      |    glam_f32x1   |   ultraviolet_f32x4   |   nalgebra_f32x4   |   ultraviolet_f32x8   |   nalgebra_f32x8   |
+|--------------------------------|-----------------|-----------------------|--------------------|-----------------------|--------------------|
+| matrix2 determinant x16        |    13.0553 ns   |           6.5697 ns   |          N/A       |         __4.9338 ns__ |          N/A       |
+| matrix2 inverse x16            |    24.5004 ns   |          13.9474 ns   |          N/A       |        __10.7321 ns__ |          N/A       |
+| matrix2 mul matrix2 x16        |    22.2942 ns   |          18.6618 ns   |          N/A       |        __14.4617 ns__ |          N/A       |
+| matrix2 mul matrix2 x256       |   599.9499 ns   |         533.0217 ns   |          N/A       |       __483.5203 ns__ |          N/A       |
+| matrix2 mul vector2 x16        |    23.3341 ns   |           9.8737 ns   |          N/A       |         __7.9456 ns__ |          N/A       |
+| matrix2 mul vector2 x256       |   823.1910 ns   |         323.3496 ns   |          N/A       |       __278.7930 ns__ |          N/A       |
+| matrix2 return self x16        |    15.9618 ns   |          15.5581 ns   |          N/A       |        __12.6208 ns__ |          N/A       |
+| matrix2 transpose x16          |    15.9673 ns   |          14.3416 ns   |          N/A       |        __10.7442 ns__ |          N/A       |
+| ray-sphere intersection x80000 |      462.3 us   |            53.32 us   |          N/A       |          __33.22 us__ |          N/A       |
+
