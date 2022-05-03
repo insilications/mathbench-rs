@@ -38,6 +38,8 @@ export CARGO_HOST_RUSTFLAGS="-Zstack-protector=none --verbose -Ccodegen-units=4 
 
 cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --features wide wide
 
+cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --features wide "wide matrix2"
+
 cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --features wide "ray-sphere"
 
 
