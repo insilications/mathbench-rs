@@ -75,3 +75,26 @@ Found 1 outliers among 100 measurements (1.00%)
 
   5/7 regressed
   0/7 improved
+
+ocperfrun --freq=110000 --dir=/var/tmp/pgo/ -- ./matrix2-ccd0c5a43c3f5a38 --bench --noplot --profile-time 3 wide
+ocperfrun --mem --freq=110000 --dir=/var/tmp/pgo/ -- ./matrix2-ccd0c5a43c3f5a38 --bench --noplot --profile-time 5 wide
+
+ocperf2bolt --nobar --jobs=12 --dir=/var/tmp/pgo/ --out=/var/tmp/pgo/ ./matrix2-ccd0c5a43c3f5a38
+
+llvm-bolt ./matrix2-ccd0c5a43c3f5a38 -o=./matrix2-ccd0c5a43c3f5a38.bolt --data=/var/tmp/pgo/combined.fdata --relocs=1 --lite=0 --reorder-blocks=cache --tsp-threshold=22 --reorder-functions=hfsort+ --reorder-functions-use-hot-size=1 --reorder-data-algo=count --cg-use-split-hot-size=1 --cg-ignore-recursive-calls=1 --cg-from-perf-data=1 --align-blocks=1 --align-blocks-min-size=0 --align-blocks-threshold=800 --align-functions=32 --use-compact-aligner=1 --align-functions-max-bytes=48 --split-align-threshold=2 --split-functions=3 --split-all-cold --split-eh --indirect-call-promotion=all --top-called-limit=100 --icf=1 --plt=all --hot-data --elim-link-veneers=1 --icp-eliminate-loads=1 --icp-top-callsites=0 --indirect-call-promotion-calls-topn=0 --indirect-call-promotion-jump-tables-topn=0 --indirect-call-promotion-topn=0 --inline-all --inline-ap --inline-max-iters=10 --inline-limit=0 --peepholes=all --align-macro-fusion=all --frame-opt=all --simplify-rodata-loads=1 --simplify-conditional-tail-calls=1 --jump-tables=aggressive --eliminate-unreachable=1 --dyno-stats --print-profile-stats --bolt-info --use-gnu-stack --fix-block-counts=1 --fix-block-counts=1
+
+./matrix2-ccd0c5a43c3f5a38.bolt --bench wide
+
+
+./ray_sphere_intersect-0a690009c494c35d --bench wide
+
+
+ocperfrun --freq=110000 --dir=/var/tmp/pgo/ -- ./ray_sphere1 --bench --noplot --profile-time 7 wide
+ocperfrun --mem --freq=110000 --dir=/var/tmp/pgo/ -- ./ray_sphere_intersect-0a690009c494c35d --bench --noplot --profile-time 6 wide
+
+
+ocperf2bolt --nobar --jobs=12 --dir=/var/tmp/pgo/ --out=/var/tmp/pgo/ ./ray_sphere1
+
+llvm-bolt ./ray_sphere1 -o=./ray_sphere1.bolt --data=/var/tmp/pgo/combined.fdata --relocs=1 --lite=0 --reorder-blocks=cache --tsp-threshold=22 --reorder-functions=hfsort+ --reorder-functions-use-hot-size=1 --reorder-data-algo=count --cg-use-split-hot-size=1 --cg-ignore-recursive-calls=1 --cg-from-perf-data=1 --align-blocks=1 --align-blocks-min-size=0 --align-blocks-threshold=800 --align-functions=32 --use-compact-aligner=1 --align-functions-max-bytes=48 --split-align-threshold=2 --split-functions=3 --split-all-cold --split-eh --indirect-call-promotion=all --top-called-limit=100 --icf=1 --plt=all --hot-data --elim-link-veneers=1 --icp-eliminate-loads=1 --icp-top-callsites=0 --indirect-call-promotion-calls-topn=0 --indirect-call-promotion-jump-tables-topn=0 --indirect-call-promotion-topn=0 --inline-all --inline-ap --inline-max-iters=10 --inline-limit=0 --peepholes=all --align-macro-fusion=all --frame-opt=all --simplify-rodata-loads=1 --simplify-conditional-tail-calls=1 --jump-tables=aggressive --eliminate-unreachable=1 --dyno-stats --print-profile-stats --bolt-info --use-gnu-stack --fix-block-counts=1 --fix-block-counts=1
+
+./ray_sphere_intersect-0a690009c494c35d.bolt --bench wide

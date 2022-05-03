@@ -40,12 +40,12 @@ cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-appli
 
 cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --features wide "wide matrix2"
 
-cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --features wide "ray-sphere"
+cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --features wide "wide ray-sphere"
 
 
 
 cargo install -Zunstable-options -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --offline --locked --no-track --force --profile release --target x86_64-unknown-linux-gnu --all-features
 
- --emit llvm-ir,link
+--emit llvm-ir,link
 
-
+llvm-bolt ./matrix2-ccd0c5a43c3f5a38 -o=./matrix2-ccd0c5a43c3f5a38.bolt --data=/var/tmp/pgo/combined.fdata --relocs=1 --lite=0 --reorder-blocks=cache --tsp-threshold=22 --reorder-functions=hfsort+ --reorder-functions-use-hot-size=1 --reorder-data-algo=count --cg-use-split-hot-size=1 --cg-ignore-recursive-calls=1 --cg-from-perf-data=1 --align-blocks=1 --align-blocks-min-size=0 --align-blocks-threshold=800 --align-functions=32 --use-compact-aligner=1 --align-functions-max-bytes=48 --split-align-threshold=2 --split-functions=3 --split-all-cold --split-eh --indirect-call-promotion=all --top-called-limit=100 --icf=1 --plt=all --hot-data --elim-link-veneers=1 --icp-eliminate-loads=1 --icp-top-callsites=0 --indirect-call-promotion-calls-topn=0 --indirect-call-promotion-jump-tables-topn=0 --indirect-call-promotion-topn=0 --inline-all --inline-ap --inline-max-iters=10 --inline-limit=0 --peepholes=all --align-macro-fusion=all --frame-opt=all --simplify-rodata-loads=1 --simplify-conditional-tail-calls=1 --jump-tables=aggressive --eliminate-unreachable=1 --dyno-stats --print-profile-stats --bolt-info --use-gnu-stack --fix-block-counts=1 --fix-block-counts=1

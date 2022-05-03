@@ -93,45 +93,45 @@ criterion = "0.3.5"
 [lib]
 bench = false
 
-[[bench]]
-name = "eulerbench"
-harness = false
+#[[bench]]
+#name = "eulerbench"
+#harness = false
 
 [[bench]]
 name = "ray_sphere_intersect"
 harness = false
 
-[[bench]]
-name = "rotation3"
-harness = false
+#[[bench]]
+#name = "rotation3"
+#harness = false
 
-[[bench]]
-name = "matrix2"
-harness = false
+#[[bench]]
+#name = "matrix2"
+#harness = false
 
-[[bench]]
-name = "matrix3"
-harness = false
+#[[bench]]
+#name = "matrix3"
+#harness = false
 
-[[bench]]
-name = "matrix4"
-harness = false
+#[[bench]]
+#name = "matrix4"
+#harness = false
 
-[[bench]]
-name = "transform2d"
-harness = false
+#[[bench]]
+#name = "transform2d"
+#harness = false
 
-[[bench]]
-name = "transform3d"
-harness = false
+#[[bench]]
+#name = "transform3d"
+#harness = false
 
-[[bench]]
-name = "transformations"
-harness = false
+#[[bench]]
+#name = "transformations"
+#harness = false
 
-[[bench]]
-name = "vector3"
-harness = false
+#[[bench]]
+#name = "vector3"
+#harness = false
 
 [profile.bench]
 # codegen-units = 1
