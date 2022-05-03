@@ -37,7 +37,8 @@ export CARGO_HOST_RUSTFLAGS="-Zstack-protector=none --verbose -Ccodegen-units=4 
 
 
 
-cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --features wide "wide ray-sphere" --timings=html
+
+cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --no-run --features wide "wide ray-sphere" --timings=html
 
 
 
@@ -45,4 +46,25 @@ cargo install -Zunstable-options -Zhost-config -Ztarget-applies-to-host --jobs 1
 
 --emit llvm-ir,link
 
-llvm-bolt ./matrix2-ccd0c5a43c3f5a38 -o=./matrix2-ccd0c5a43c3f5a38.bolt --data=/var/tmp/pgo/combined.fdata --relocs=1 --lite=0 --reorder-blocks=cache --tsp-threshold=22 --reorder-functions=hfsort+ --reorder-functions-use-hot-size=1 --reorder-data-algo=count --cg-use-split-hot-size=1 --cg-ignore-recursive-calls=1 --cg-from-perf-data=1 --align-blocks=1 --align-blocks-min-size=0 --align-blocks-threshold=800 --align-functions=32 --use-compact-aligner=1 --align-functions-max-bytes=48 --split-align-threshold=2 --split-functions=3 --split-all-cold --split-eh --indirect-call-promotion=all --top-called-limit=100 --icf=1 --plt=all --hot-data --elim-link-veneers=1 --icp-eliminate-loads=1 --icp-top-callsites=0 --indirect-call-promotion-calls-topn=0 --indirect-call-promotion-jump-tables-topn=0 --indirect-call-promotion-topn=0 --inline-all --inline-ap --inline-max-iters=10 --inline-limit=0 --peepholes=all --align-macro-fusion=all --frame-opt=all --simplify-rodata-loads=1 --simplify-conditional-tail-calls=1 --jump-tables=aggressive --eliminate-unreachable=1 --dyno-stats --print-profile-stats --bolt-info --use-gnu-stack --fix-block-counts=1 --fix-block-counts=1
+
+
+
+
+
+
+
+ocperfrun --freq=5000 --dir=/insilications/var/tmp/pgo/ -- cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --no-run --features wide "wide ray-sphere" --timings=html
+
+ocperfrun --mem --freq=110000 --dir=/insilications/var/tmp/pgo/ -- cargo bench -Zunstable-options -Zbinary-dep-depinfo -Zhost-config -Ztarget-applies-to-host --jobs 16 -vv --target x86_64-unknown-linux-gnu --no-run --features wide "wide ray-sphere"
+
+
+ocperf2bolt --nobar --jobs=12 --dir=/insilications/var/tmp/pgo/ --out=/insilications/var/tmp/pgo/ /usr/bin/rustc
+
+
+llvm-bolt /usr/bin/rustc -o=./rustc.bolt --data=/insilications/var/tmp/pgo/combined.fdata --relocs=1 --lite=0 --reorder-blocks=cache+ --tsp-threshold=22 --reorder-functions=hfsort+ --reorder-functions-use-hot-size=1 --reorder-data-algo=count --cg-use-split-hot-size=1 --cg-ignore-recursive-calls=1 --cg-from-perf-data=1 --align-blocks=1 --align-blocks-min-size=0 --align-blocks-threshold=800 --align-functions=32 --use-compact-aligner=1 --align-functions-max-bytes=48 --split-align-threshold=2 --split-functions=3 --split-all-cold --split-eh --indirect-call-promotion=all --top-called-limit=100 --icf=1 --plt=all --hot-data --elim-link-veneers=1 --icp-eliminate-loads=1 --icp-top-callsites=0 --indirect-call-promotion-calls-topn=0 --indirect-call-promotion-jump-tables-topn=0 --indirect-call-promotion-topn=0 --inline-all --inline-ap --inline-max-iters=10 --inline-limit=0 --peepholes=all --align-macro-fusion=all --frame-opt=all --simplify-rodata-loads=1 --simplify-conditional-tail-calls=1 --jump-tables=aggressive --eliminate-unreachable=1 --dyno-stats --print-profile-stats --bolt-info --use-gnu-stack --fix-block-counts=1 --fix-block-counts=1
+
+
+
+ocperf2bolt --jobs=1 --dir=/insilications/var/tmp/pgo/ --out=/insilications/var/tmp/pgo/ /usr/lib64/librustc_driver-b1ad7d5198471c6c.so
+
+llvm-bolt /usr/lib64/librustc_driver-b1ad7d5198471c6c.so -o=./librustc_driver-b1ad7d5198471c6c-bolt.so --data=/insilications/var/tmp/pgo/combined.fdata --relocs=1 --lite=0 --reorder-blocks=cache+ --tsp-threshold=22 --reorder-functions=hfsort+ --reorder-functions-use-hot-size=1 --reorder-data-algo=count --cg-use-split-hot-size=1 --cg-ignore-recursive-calls=1 --cg-from-perf-data=1 --align-blocks=1 --align-blocks-min-size=0 --align-blocks-threshold=800 --align-functions=32 --use-compact-aligner=1 --align-functions-max-bytes=48 --split-align-threshold=2 --split-functions=3 --split-all-cold --split-eh --indirect-call-promotion=all --top-called-limit=100 --icf=1 --plt=all --hot-data --elim-link-veneers=1 --icp-eliminate-loads=1 --icp-top-callsites=0 --indirect-call-promotion-calls-topn=0 --indirect-call-promotion-jump-tables-topn=0 --indirect-call-promotion-topn=0 --inline-all --inline-ap --inline-max-iters=10 --inline-limit=0 --peepholes=all --align-macro-fusion=all --frame-opt=all --simplify-rodata-loads=1 --simplify-conditional-tail-calls=1 --jump-tables=aggressive --eliminate-unreachable=1 --dyno-stats --print-profile-stats --bolt-info --use-gnu-stack --fix-block-counts=1 --fix-block-counts=1

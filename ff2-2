@@ -76,6 +76,8 @@ Found 1 outliers among 100 measurements (1.00%)
   5/7 regressed
   0/7 improved
 
+ocperfrunsettings --perf_event_paranoid=-1 --perf_event_max_stack=1000 --perf_event_max_contexts_per_stack=16 --perf_event_mlock_kb=1028 --perf_cpu_time_max_percent=0 --perf_event_max_sample_rate=110000
+
 ocperfrun --freq=110000 --dir=/var/tmp/pgo/ -- ./matrix2-ccd0c5a43c3f5a38 --bench --noplot --profile-time 3 wide
 ocperfrun --mem --freq=110000 --dir=/var/tmp/pgo/ -- ./matrix2-ccd0c5a43c3f5a38 --bench --noplot --profile-time 5 wide
 
