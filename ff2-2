@@ -1,0 +1,77 @@
+scalar ray-sphere intersection/glam/10000
+                        time:   [5.6261 us 5.6289 us 5.6310 us]
+                        thrpt:  [1.7759 Gelem/s 1.7766 Gelem/s 1.7774 Gelem/s]
+                 change:
+                        time:   [+7.8150% +7.9241% +8.0401%] (p = 0.00 < 0.05)
+                        thrpt:  [-7.4418% -7.3423% -7.2485%]
+                        Performance has regressed.
+Found 10 outliers among 100 measurements (10.00%)
+  5 (5.00%) low severe
+  1 (1.00%) low mild
+  2 (2.00%) high mild
+  2 (2.00%) high severe
+scalar ray-sphere intersection/cgmath/10000
+                        time:   [6.3267 us 6.3305 us 6.3349 us]
+                        thrpt:  [1.5785 Gelem/s 1.5797 Gelem/s 1.5806 Gelem/s]
+                 change:
+                        time:   [+7.4465% +7.7033% +7.9706%] (p = 0.00 < 0.05)
+                        thrpt:  [-7.3822% -7.1523% -6.9305%]
+                        Performance has regressed.
+Found 21 outliers among 100 measurements (21.00%)
+  14 (14.00%) low severe
+  1 (1.00%) low mild
+  3 (3.00%) high mild
+  3 (3.00%) high severe
+scalar ray-sphere intersection/ultraviolet/10000
+                        time:   [6.2931 us 6.2948 us 6.2965 us]
+                        thrpt:  [1.5882 Gelem/s 1.5886 Gelem/s 1.5890 Gelem/s]
+                 change:
+                        time:   [+7.3233% +7.4099% +7.5019%] (p = 0.00 < 0.05)
+                        thrpt:  [-6.9784% -6.8987% -6.8236%]
+                        Performance has regressed.
+Found 7 outliers among 100 measurements (7.00%)
+  2 (2.00%) low mild
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+scalar ray-sphere intersection/nalgebra/10000
+                        time:   [6.2313 us 6.2359 us 6.2405 us]
+                        thrpt:  [1.6024 Gelem/s 1.6036 Gelem/s 1.6048 Gelem/s]
+                 change:
+                        time:   [+6.5379% +6.6259% +6.7177%] (p = 0.00 < 0.05)
+                        thrpt:  [-6.2948% -6.2142% -6.1367%]
+                        Performance has regressed.
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+
+wide ray-sphere intersection/glam_f32x1/80000
+                        time:   [466.46 us 466.79 us 467.18 us]
+                        thrpt:  [171.24 Melem/s 171.38 Melem/s 171.51 Melem/s]
+                 change:
+                        time:   [+0.8443% +1.0035% +1.1623%] (p = 0.00 < 0.05)
+                        thrpt:  [-1.1490% -0.9935% -0.8372%]
+                        Change within noise threshold.
+Found 6 outliers among 100 measurements (6.00%)
+  1 (1.00%) low mild
+  1 (1.00%) high mild
+  4 (4.00%) high severe
+wide ray-sphere intersection/ultraviolet_f32x4/80000
+                        time:   [55.213 us 55.218 us 55.225 us]
+                        thrpt:  [1.4486 Gelem/s 1.4488 Gelem/s 1.4489 Gelem/s]
+                 change:
+                        time:   [+2.2637% +2.5488% +2.8399%] (p = 0.00 < 0.05)
+                        thrpt:  [-2.7615% -2.4854% -2.2136%]
+                        Performance has regressed.
+wide ray-sphere intersection/ultraviolet_f32x8/80000
+                        time:   [33.477 us 33.515 us 33.555 us]
+                        thrpt:  [2.3842 Gelem/s 2.3870 Gelem/s 2.3897 Gelem/s]
+                 change:
+                        time:   [+0.9041% +1.0056% +1.1222%] (p = 0.00 < 0.05)
+                        thrpt:  [-1.1097% -0.9956% -0.8960%]
+                        Change within noise threshold.
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+
+
+  5/7 regressed
+  0/7 improved
